@@ -1,0 +1,25 @@
+name:node-js build
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checout code
+      uses: actions/checkout@v3
+    
+    - name: node js set up
+      uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+ 
+    - name: install dependencies
+      run: npm install
+
+    - name: run build
+      run: npm run build 
